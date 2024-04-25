@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //Entry Point
-void main() {
+void main() {               //Debug
   runApp(const GrowerApp());
 }
 
@@ -27,8 +27,9 @@ class GrowerApp extends StatelessWidget {
     );
   }
 }
-
 class BottomNavBar extends StatelessWidget {
+  const BottomNavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const BottomAppBar(
@@ -56,7 +57,6 @@ class BottomNavBar extends StatelessWidget {
     );
   }
 }
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('(LOGO HERE)'),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: <Widget>[
             Center(
               child: Text("Übersicht von bevorstehenden Events"),
@@ -78,15 +78,61 @@ class HomePage extends StatelessWidget {
               child: Text("Pflanzen Angebot"),
             ),
             Center(
-              child: Text("Account Verwaltung"),
-            ),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(PageRouteBuilder(
+                    opaque: false,
+                    pageBuilder: (BuildContext context, _, __) =>
+                    SignUpOverlay()));
+                },
+                child: Text('Sign Up'),
+              ),
+            )
           ],
         ),
-        bottomNavigationBar: ClipRRect(
-          borderRadius: const BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+        bottomNavigationBar: const ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
           child: BottomNavBar(),
         ),
       ),
     );
   }
 }
+class SignUpOverlay extends StatelessWidget {
+  const SignUpOverlay({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Vorab Registrieren'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+              const TextField( 
+                //First Name
+                keyboardType: TextInputType.name,
+              ),
+              const TextField(
+                //Last Name
+                keyboardType: TextInputType.name,
+              ),
+              const TextField(
+                //Birthday
+                keyboardType: TextInputType.datetime,   
+              ),
+              FloatingActionButton(
+                child: const Text("Weiter"),
+                onPressed: () {
+                  
+                }
+              )
+          ],
+        )
+      ),
+    );
+  }
+}
+
