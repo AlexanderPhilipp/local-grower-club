@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -229,6 +230,18 @@ class _SignUpState extends State<SignUpOverlay> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Flexible(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Ich bin:",
+                        textAlign: TextAlign.left,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ],
+                  )),
+                  const SizedBox(height: 15),
                   TextField(
                     cursorColor: const Color.fromARGB(255, 217, 240, 222),
                     keyboardType: TextInputType.name,
@@ -284,22 +297,84 @@ class _SignUpState extends State<SignUpOverlay> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(
-                    cursorColor: const Color.fromARGB(255, 217, 240, 222),
-                    keyboardType: TextInputType.name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium
-                        ?.merge(const TextStyle(fontSize: 18)),
+                  Flexible(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Meine Adresse:",
+                        textAlign: TextAlign.left,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ],
+                  )),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: TextField(
+                          cursorColor: const Color.fromARGB(255, 217, 240, 222),
+                          keyboardType: TextInputType.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.merge(const TextStyle(fontSize: 18)),
+                          decoration: const InputDecoration(
+                            hintText: "Straße...",
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      SizedBox(
+                        width: 75,
+                        child: TextField(
+                          cursorColor: const Color.fromARGB(255, 217, 240, 222),
+                          keyboardType: TextInputType.number,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.merge(const TextStyle(fontSize: 18)),
+                          decoration: const InputDecoration(
+                            hintText: "Nr.",
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                   const SizedBox(height: 10),
-                  TextField(
-                    cursorColor: const Color.fromARGB(255, 217, 240, 222),
-                    keyboardType: TextInputType.name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium
-                        ?.merge(const TextStyle(fontSize: 18)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: TextField(
+                          cursorColor: const Color.fromARGB(255, 217, 240, 222),
+                          keyboardType: TextInputType.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.merge(const TextStyle(fontSize: 18)),
+                          decoration: const InputDecoration(
+                            hintText: "Ort...",
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      SizedBox(
+                        width: 100,
+                        child: TextField(
+                          cursorColor: const Color.fromARGB(255, 217, 240, 222),
+                          keyboardType: TextInputType.number,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.merge(const TextStyle(fontSize: 18)),
+                          decoration: const InputDecoration(
+                            hintText: "Plz.",
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                   const SizedBox(height: 30),
                   TextButton(
